@@ -1,3 +1,4 @@
+import { Navbar } from '@/components/navbar/Navbar';
 import React from 'react';
 export const metadata = {
   title: 'Dashboard | MyApp',
@@ -6,7 +7,7 @@ export const metadata = {
 const Dashboard = () => {
   return (
     <div>
-      <h1>Our Dashboard</h1>
+      <Navbar />
     </div>
   );
 };

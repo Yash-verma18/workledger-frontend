@@ -14,7 +14,7 @@ export default function Home() {
     }
   }, [isConnected, router]);
   return (
-    <div className='flex flex-col items-center justify-center w-full gap-8 mt-20'>
+    <div className='flex flex-col items-center justify-center w-full gap-8 mt-10'>
       <Image
         src='/work.svg'
         alt='Work'
