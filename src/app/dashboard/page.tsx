@@ -63,20 +63,13 @@ const Dashboard = () => {
           Your Testimonials
         </p>
         <p className='text-base md:text-lg mt-4 text-white font-normal inter-var text-center'>
-          Leverage the power of on chain work review.
+          Leverage the power of onchain work review.
         </p>
 
         {!showTestimonialForm && (
           <div className='mt-10'>
             <TestimonialsGrid testimonials={testimonials} />
           </div>
-        )}
-
-        {showTestimonialForm && (
-          <TestimonialForm
-            onSubmitted={() => setOpen(false)}
-            setTestimonials={setTestimonials}
-          />
         )}
 
         {showTestimonialForm && (
