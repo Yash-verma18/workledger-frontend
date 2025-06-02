@@ -7,7 +7,24 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 
-export default function TestimonialForm() {
+import { useAccount, useWriteContract } from 'wagmi';
+import { parseEther } from 'viem';
+import { WorkLedgerABI } from '@/lib/WorkLedgerABI';
+import { WORKLEDGER_ADDRESS } from '@/lib/constants';
+import { TestimonialType } from '@/lib/type';
+
+interface TestimonialFormProps {
+  onSubmitted: () => void;
+  setTestimonials: React.Dispatch<React.SetStateAction<TestimonialType[]>>;
+}
+
+export default function TestimonialForm({
+  onSubmitted,
+  setTestimonials,
+}: TestimonialFormProps) {
+  const { isConnected, address } = useAccount();
+  const { writeContractAsync } = useWriteContract();
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [name, setName] = useState('');
   const [work, setWork] = useState('');
@@ -16,23 +33,42 @@ export default function TestimonialForm() {
   const [tip, setTip] = useState('0.01');
 
   const handleSubmit = async () => {
+    if (!isConnected || !address) return alert('Connect wallet first');
     if (!work || !message) return alert('Fill all fields');
 
-    console.log({
-      name,
-      work,
-      message,
-      rating,
-      tip,
-    });
     setIsSubmitting(true);
 
     try {
+      const txHash = await writeContractAsync({
+        address: WORKLEDGER_ADDRESS,
+        abi: WorkLedgerABI,
+        functionName: 'leaveTestimonial',
+        args: [message, work, name, rating],
+        value: parseEther(tip),
+      });
+
+      console.log('✅ Tx submitted:', txHash);
+
+      setTestimonials((prev) => [
+        {
+          from: address,
+          name,
+          message,
+          workDescription: work,
+          rating,
+          tip: `${tip} ETH`,
+          timestamp: 'just now',
+        },
+        ...prev,
+      ]);
+
       setWork('');
       setName('');
       setMessage('');
       setRating(5);
       setTip('0.01');
+
+      onSubmitted?.();
     } catch (err) {
       console.error('❌ Error submitting testimonial:', err);
       alert('Transaction failed.');
