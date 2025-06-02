@@ -9,8 +9,10 @@ import {
   BreadcrumbSeparator,
 } from './breadcrumb';
 import { Home } from 'lucide-react';
-
-function Navbar() {
+interface NavbarProps {
+  setOpen: (state: boolean) => void;
+}
+function Navbar({ setOpen }: NavbarProps) {
   const { disconnect } = useDisconnect();
   return (
     <Breadcrumb>
@@ -23,12 +25,22 @@ function Navbar() {
         </BreadcrumbItem>
         <BreadcrumbSeparator> / </BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbLink style={{ cursor: 'pointer' }}>
+          <BreadcrumbLink
+            style={{ cursor: 'pointer' }}
+            onClick={() => {
+              setOpen(false);
+            }}
+          >
             Dashboard
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator> / </BreadcrumbSeparator>
-        <BreadcrumbItem style={{ cursor: 'pointer' }}>
+        <BreadcrumbItem
+          style={{ cursor: 'pointer' }}
+          onClick={() => {
+            setOpen(true);
+          }}
+        >
           <BreadcrumbLink>Leave Testimonial</BreadcrumbLink>
         </BreadcrumbItem>
       </BreadcrumbList>

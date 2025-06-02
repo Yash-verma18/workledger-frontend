@@ -9,6 +9,7 @@ import { usePublicClient } from 'wagmi';
 import { WORKLEDGER_ADDRESS } from '@/lib/constants';
 import { WorkLedgerABI } from '@/lib/WorkLedgerABI';
 import { formatEther } from 'viem';
+import TestimonialsGrid from '@/components/grids/TestimonialsGrid';
 const Dashboard = () => {
   const [testimonials, setTestimonials] = useState<TestimonialType[]>([]);
   const [showTestimonialForm, setOpen] = useState(false);
@@ -52,13 +53,40 @@ const Dashboard = () => {
   }, [testimonials]);
 
   return (
-    <div>
-      <Navbar />
-      <TestimonialForm
-        onSubmitted={() => setOpen(false)}
-        setTestimonials={setTestimonials}
-      />
-    </div>
+    testimonials?.length > 0 && (
+      <div>
+        <div className='w-full h-15 relative flex  items-center px-6 z-10  rounded-4xl  mt-2 '>
+          <Navbar setOpen={setOpen} />
+        </div>
+
+        <p className='text-2xl md:text-4xl lg:text-7xl text-white font-bold inter-var text-center'>
+          Your Testimonials
+        </p>
+        <p className='text-base md:text-lg mt-4 text-white font-normal inter-var text-center'>
+          Leverage the power of on chain work review.
+        </p>
+
+        {!showTestimonialForm && (
+          <div className='mt-10'>
+            <TestimonialsGrid testimonials={testimonials} />
+          </div>
+        )}
+
+        {showTestimonialForm && (
+          <TestimonialForm
+            onSubmitted={() => setOpen(false)}
+            setTestimonials={setTestimonials}
+          />
+        )}
+
+        {showTestimonialForm && (
+          <TestimonialForm
+            onSubmitted={() => setOpen(false)}
+            setTestimonials={setTestimonials}
+          />
+        )}
+      </div>
+    )
   );
 };
 
