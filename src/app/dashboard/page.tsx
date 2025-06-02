@@ -1,13 +1,13 @@
+'use client';
+import TestimonialForm from '@/components/forms/TestimonialForm';
 import { Navbar } from '@/components/navbar/Navbar';
-import React from 'react';
-export const metadata = {
-  title: 'Dashboard | MyApp',
-  description: 'Your personal dashboard page',
-};
+import React, { useState } from 'react';
+
 const Dashboard = () => {
   return (
     <div>
       <Navbar />
+      <TestimonialForm />
     </div>
   );
 };
