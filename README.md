@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+
+# 🧾 WorkLedger : On-Chain Work Reviews DApp
+
+Welcome to the frontend repository for **WorkLedger**, a decentralized application that enables users to leave **on-chain reviews**, tips, and ratings for work done verifiable, immutable, and censorship-resistant.
+
+Built with a seamless Web3 user experience in mind.
+
+## 🔗 Live DApp
+
+🌐 [Launch WorkLedger](https://workledger-frontend.vercel.app/)
+
+## 📖 Blog
+
+📝 [How I Built WorkLedger](https://vermayash1881.medium.com/how-i-built-workledger-a-dapp-for-on-chain-work-reviews-bc0c6a4e50c1)
+
+## 📁 Repositories
+
+- Smart Contracts → [workledger-contract](https://github.com/Yash-verma18/workledger-contract)
+- Frontend (You are here) → [workledger-frontend](https://github.com/Yash-verma18/workledger-frontend)
+
+---
+
+## ⚙️ Tech Stack
+
+- [Next.js](https://nextjs.org/) (App Router)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Shadcn/UI](https://ui.shadcn.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Wagmi](https://wagmi.sh/) + [RainbowKit](https://www.rainbowkit.com/)
+- [Ethers.js](https://docs.ethers.org/v5/)
+- Smart Contracts: [Foundry](https://book.getfoundry.sh/)
+
+---
+
+## 🚀 Features
+
+- ✅ Connect Wallet (RainbowKit)
+- ✅ Submit testimonial with message, work description, rating, and optional tip
+- ✅ All data stored on-chain (Work, Reviewer, Rating, Timestamp, ETH Tip)
+- ✅ Reviews are fetched and sorted by most recent
+- ✅ Responsive, modern UI with smooth UX
+- ✅ Sepolia network support
+
+---
+
+## 🛠️ Setup & Installation
+
+1. **Clone the repo**
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Yash-verma18/workledger-frontend.git
+cd workledger-frontend
+````
+
+2. **Install dependencies**
+
+```bash
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Configure environment variables**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a `.env.local` file with:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=your_project_id
+NEXT_PUBLIC_CHAIN_ID=11155111
+```
 
-## Learn More
+4. **Run the dev server**
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+yarn dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🧠 Learn More
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* 🔬 All testimonials are retrieved using `readContract()` from `viem`
+* 🧾 Each transaction links to [Sepolia Etherscan](https://sepolia.etherscan.io/)
+* ⚡ Uses `Framer Motion` for comic-style animated card interactions
+* 🔍 Wallet timeline layout inspired by comic panels
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📷 UI Preview
+
+| Submit Testimonial             | View Testimonials                    |
+| ------------------------------ | ------------------------------------ |
+| ![Submit](./asset/form.gif) | ![Testimonials](./asset/carrd.gif) |
+
+
+---
+
+## 🤝 Contributing
+
+PRs welcome. Please follow conventional commits and ensure clean code. Open an issue if you'd like to suggest something new!
+
+---
+
+## 📬 Contact
+
+👨‍💻 Made with ❤️ by [Yash Verma](https://yash-verma.me)
+📬 Reach out via [Twitter](https://x.com/raymax0x) | [LinkedIn](https://linkedin.com/in/yashverma1881)
+
+---
+
+## 📜 License
+
+[MIT](LICENSE)
+
+```
+
+```
