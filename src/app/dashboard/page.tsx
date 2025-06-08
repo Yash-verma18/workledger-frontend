@@ -53,8 +53,7 @@ const Dashboard = () => {
   }, [testimonials]);
 
   return (
-    testimonials?.length > 0 && (
-      <div>
+    <div>
         <div className='w-full h-15 relative flex  items-center px-6 z-10  rounded-4xl  mt-2 '>
           <Navbar setOpen={setOpen} />
         </div>
@@ -68,7 +67,11 @@ const Dashboard = () => {
 
         {!showTestimonialForm && (
           <div className='mt-10'>
-            <TestimonialsGrid testimonials={testimonials} />
+            {testimonials.length > 0 ? (
+              <TestimonialsGrid testimonials={testimonials} />
+            ) : (
+              <p className='text-center text-white'>No testimonials yet.</p>
+            )}
           </div>
         )}
 
@@ -79,7 +82,6 @@ const Dashboard = () => {
           />
         )}
       </div>
-    )
   );
 };
 
